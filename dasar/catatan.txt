@@ -1,0 +1,12 @@
+- fungsi yang memiliki multi return maka semua return nya harus di tangkap,jika tidak ingin menangkap semuanya gunakan garis bawah _
+- new di gunakan untuk mengalokasi memmory dan mengembalikan pointer tipe data dengan nilai zero.ini berguna jika kita ingin membuat variable tipe pointer dan tidak langsung di isi.jadi, new ini berguna untuk inisialisasi variable pointer.karena jikat tidak di := new(tipeData).variable pointer akan bernilai nil dan jika di print akan menimbulkan panic
+- make di gunakan untuk mengalokasi dan menginisialisasi tipe data map,slice, dan channel ( lebih ke tipe data dinamis )
+- untuk mengakses data pointer tipe struct tidak perlu menggunakan bintang
+- printf()
+    - %v default
+    - %T tipe data
+    - %p alamat pointer
+    - %b binary
+    - %x hexadecimal
+    - %f float
+    
