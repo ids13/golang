@@ -1,0 +1,40 @@
+package mockup
+
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
+
+func TestOperasiMatematika(t *testing.T) {
+	// Membuat instance dari Kalkulator
+	// Menjalankan tes untuk implementasi Kalkulator
+	jalankanTes(t, &Kalkulator{})
+
+	// Membuat mock dari interface OperasiMatematika
+	mockOp := new(MockOperasiMatematika)
+	// Menetapkan ekspektasi untuk metode Tambah
+	mockOp.On("Tambah", 3, 5).Return(8)
+	// Menetapkan ekspektasi untuk metode Kurang
+	mockOp.On("Kurang", 8, 2).Return(6)
+	// Menetapkan ekspektasi untuk metode Kali
+	mockOp.On("Kali", 4, 3).Return(12)
+	// Menjalankan tes untuk mock MockOperasiMatematika
+	jalankanTes(t, mockOp)
+    // Memverifikasi bahwa semua ekspektasi terpenuhi. ini untuk cek mockup
+    mockOp.AssertExpectations(t)
+}
+
+// Fungsi ini menguji implementasi OperasiMatematika, apakah itu Kalkulator atau MockOperasiMatematika
+func jalankanTes(t *testing.T, op OperasiMatematika) {
+	// Menggunakan instance OperasiMatematika untuk melakukan operasi matematika
+	hasilTambah := op.Tambah(3, 5)
+	hasilKurang := op.Kurang(8, 2)
+	hasilKali := op.Kali(4, 3)
+
+	// Memastikan hasil operasi matematika yang dihasilkan sesuai dengan yang diharapkan
+    
+	assert.Equal(t, 8, hasilTambah)
+	assert.Equal(t, 6, hasilKurang)
+	assert.Equal(t, 12, hasilKali)
+}

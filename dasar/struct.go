@@ -23,4 +23,7 @@ func main() {
 		umur:    40,
 	}
 	fmt.Println(data2.nama)
+
+	data3 := customer{"andi", "kuliah", 20}
+	fmt.Println(data3)
 }

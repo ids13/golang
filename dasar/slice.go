@@ -4,12 +4,16 @@ import "fmt"
 
 func main() {
 	/*
-			capacity di hitung dari elemen pertama yang di slice(paling kiri)
-			len di hitung dari jumlah elemen yang di tampilkan dalam batasan
+		Slice adalah struktur data dinamis dalam bahasa pemrograman Go
+		yang memungkinkan Anda untuk membuat dan bekerja dengan koleksi elemen.
+		Slice dibangun di atas array dan memberikan cara yang lebih fleksibel untuk mengelola data.
 
-		a := [3]int{1,2,3} ini array
-		a := [...]int{1,2,3} ini array
-		a := []int{1,2,3} ini slice
+				capacity di hitung dari elemen pertama yang di slice(paling kiri)
+				len di hitung dari jumlah elemen yang di tampilkan dalam batasan
+
+			a := [3]int{1,2,3} ini array
+			a := [...]int{1,2,3} ini array
+			a := []int{1,2,3} ini slice
 	*/
 	nama := []string{"apel", "mangga", "jeruk", "nangka"}
 	fmt.Println(nama)
@@ -61,7 +65,7 @@ func main() {
 		membuat slice baru , ini lebih aman di karenakan arraynya di sembunyikan di belakang slice\
 		make([]tipe data,jumlah elemen,capacity)
 	*/
-	y := make([]string)
+
 	x := make([]string, 2, 5)
 	x[0] = "naga"
 	x[1] = "langit"

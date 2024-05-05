@@ -18,7 +18,7 @@ func main() {
 	var err error
 	err = cekPanjangKata("contoh")
 	if err != nil {
-		fmt.Println("Error:", err)
+		fmt.Println("Error:", err.Error())
 	} else {
 		fmt.Println("Panjang kata mencukupi.")
 	}
@@ -29,5 +29,6 @@ func main() {
 		fmt.Println("Error:", err)
 	} else {
 		fmt.Println("Panjang kata mencukupi.")
+
 	}
 }

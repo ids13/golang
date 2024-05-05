@@ -32,4 +32,25 @@ func main() {
 	for range numbers {
 		fmt.Println("Iterasi")
 	}
+	// contoh penggunaan break dan continue
+	for i := 0; i < 10; i++ {
+		if i == 4 {
+			continue
+		} else if i == 7 {
+			break
+		} else {
+			fmt.Println("hai ", i)
+		}
+	}
+	// pengulangan range dana angka yg sudah di tentukan
+	for range 5{
+		fmt.Println("hallo")
+	}
+
+	/* 
+	ini untuk infinite looping
+	for{
+
+	}
+	*/
 }

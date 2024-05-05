@@ -1,0 +1,6 @@
+github.com/ids13/go-module-branch/v2 v2.0.0 h1:q7HSWD+Rn8V4unX0br8PAl1CcERA2QTwx2+4kzE/6bI=
+github.com/ids13/go-module-branch/v2 v2.0.0/go.mod h1:nvxG0zdymra+3wf1LlFABC1VJuRQH8DP/8Zpa2YFNUo=
+github.com/ids13/go-module-branch/v2 v2.0.1 h1:RuRotJ4+u9AIKHSy9BDCF/VR0EUJwC3jzZwrUUk6lww=
+github.com/ids13/go-module-branch/v2 v2.0.1/go.mod h1:nvxG0zdymra+3wf1LlFABC1VJuRQH8DP/8Zpa2YFNUo=
+github.com/ids13/go-module-dir/v3 v3.0.0 h1:3FP9wV/UCIVFbWDufk25eGPat2DUyODSydTl7Ee+gyU=
+github.com/ids13/go-module-dir/v3 v3.0.0/go.mod h1:dkpY69SKNdAYP8btCiqeaPw63VMWKfn2O4G6iLvVSLA=

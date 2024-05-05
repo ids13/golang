@@ -1,9 +1,14 @@
-// main.go
+/* ini adalah main dari modul dengan nama paket */
 package main
 
-import "paket/sayhello" // Ganti dengan path yang sesuai dengan struktur proyek Anda
+import (
+	"fmt"
+	"paket/say"
+)
 
 func main() {
-	// Memanggil fungsi SayHello dari package sayhello
-	sayhello.SayHello()
+	say.HelperFunction()
+	say.UtilFunction()
+	a := say.Data{Name: "tes", Value: 13} //test
+	fmt.Println(a.Name, a.Value)
 }

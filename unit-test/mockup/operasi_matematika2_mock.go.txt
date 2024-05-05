@@ -1,0 +1,23 @@
+package mockup
+
+import "github.com/stretchr/testify/mock"
+
+// Mock untuk interface OperasiMatematika
+type MockOperasiMatematika struct {
+    mock.Mock
+}
+
+func (m *MockOperasiMatematika) Tambah(a, b int) int {
+    args := m.Called(a, b)
+    return args.Int(0)
+}
+
+func (m *MockOperasiMatematika) Kurang(a, b int) int {
+    args := m.Called(a, b)
+    return args.Int(0)
+}
+
+func (m *MockOperasiMatematika) Kali(a, b int) int {
+    args := m.Called(a, b)
+    return args.Int(0)
+}

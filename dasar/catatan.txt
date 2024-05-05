@@ -1,3 +1,4 @@
+- di golang dalam satu project hanya boleh ada satu fungsi main()
 - fungsi yang memiliki multi return maka semua return nya harus di tangkap,jika tidak ingin menangkap semuanya gunakan garis bawah _
 - new di gunakan untuk mengalokasi memmory dan mengembalikan pointer tipe data dengan nilai zero.ini berguna jika kita ingin membuat variable tipe pointer dan tidak langsung di isi.jadi, new ini berguna untuk inisialisasi variable pointer.karena jikat tidak di := new(tipeData).variable pointer akan bernilai nil dan jika di print akan menimbulkan panic
 - make di gunakan untuk mengalokasi dan menginisialisasi tipe data map,slice, dan channel ( lebih ke tipe data dinamis )
@@ -9,4 +10,176 @@
     - %b binary
     - %x hexadecimal
     - %f float
+-Fungsi init() dalam bahasa pemrograman Go (Golang) adalah suatu konsep yang digunakan 
+untuk melakukan inisialisasi awal atau tindakan pra-eksekusi sebelum fungsi main() dijalankan dalam program Go. 
+-itoa (int to ascii) / atoi (ascii to int) : untuk konversi tipe data
+-nil adalah nilai nol untuk tipe data referensi (pointer, slice, map, channel, dan interface).
+-membuat slice baru , ini lebih aman di karenakan arraynya di sembunyikan di belakang slice
+-deklarasikan : menyatakan keberadaan variable
+-inisialisasi : memberikan nilai awal untuk sebuah variable
+-Iterasi :melakukan perulangan atau penelusuran terhadap elemen-elemen dalam suatu kumpulan data
+-value, found := data[keyToFind] : mencari data di map kemudian mengembalikan nilai nya dan status 
+
+Gunakan if jika:
+Hanya ada satu kondisi yang perlu dievaluasi.
+Kondisi bersifat sederhana.
+Menggunakan kondisi logika yang kompleks atau gabungan kondisi.
+Gunakan switch jika:
+Anda memiliki beberapa pilihan atau kasus.
+Kasus-kasus bersifat diskrit dan jelas.
+Menggunakan tipe data khusus atau ekspresi.
+Melakukan evaluasi sederhana pada variabel atau ekspresi.
+
+Function: Merupakan blok kode yang berdiri sendiri dan dapat dipanggil dari mana saja dalam program.
+tidak terikat secara langsung pada sebuah tipe data tertentu.
+Method: Merupakan fungsi yang terkait dengan suatu tipe data tertentu. 
+Method "hidup" di dalam tipe data tersebut dan dapat diakses melalui variabel yang bertipe data tersebut.
+
+-oprasi perbadingan bisa juga di gunakan di bagian return
+contoh : 
+return angka/100 == 0
+-Penerima (receiver) dalam sebuah metode Go adalah parameter yang ditempatkan sebelum nama metode.
+Ini menunjukkan kepada Go bahwa metode tersebut terkait dengan tipe data tertentu.
+Mari kita bahas lebih dalam.
+func (receiver TipeData) NamaMetode() TipeKembalian {
+    // Logika metode di sini
+}
+
+type Dog struct {
+	Animal // Embedding Animal struct //membuat struct di dalam struct tanapa menuliskan tipe datanya.
+	Breed  string
+}
+nanti inisialisasi nya
+dog := Dog{
+		Animal: Animal{Name: "Fido"}, // Inisialisasi bagian Animal
+		Breed:  "Labrador",
+	}
     
+ conver string ke slice byte
+str := "hello"
+byteSlice := []byte(str) 
+ convert slice byte ke string
+byteSlice2 := []byte{104, 101, 108, 108, 111}
+str2 := string(byteSlice2)
+
+strings.NewReader: Menghasilkan objek io.Reader dari sebuah string.
+import "strings"
+str := "Hello, World!"
+reader := strings.NewReader(str)
+
+bytes.NewReader: Menghasilkan objek io.Reader dari sebuah slice byte.
+import "bytes"
+data := []byte("Hello, World!")
+reader := bytes.NewReader(data)
+
+ bytes.Buffer ( ini objek io.Reader, io.Writer, io.ReaderAt, io.WriterAt, dan io.ByteScanner)
+bytes.Buffer adalah tipe data di Go yang digunakan untuk memanipulasi data dalam bentuk byte di dalam memori. 
+Ini adalah implementasi dari antarmuka io.Reader, io.Writer, io.ReaderAt, io.WriterAt, dan io.ByteScanner, 
+yang berarti Anda dapat menggunakan bytes.Buffer untuk membaca dari dan menulis ke buffer byte.
+biasanya jika ingin di gunakan sebagai parameter ini harus di passing nilai alamat nya ,jadi gunakan tanda &
+ bytes.NewBuffer adalah fungsi untuk membuat object *byte.Buffer (pointer tipe data byte.Buffer)
+newBuffer := bytes.NewBuffer([]byte("Hello, World!"))
+di golang ada beberapa tipe data yagn punya implementasi io.writer dan io.reader sekaligus
+ contohnya saja byte.Buffer dan os.file
+
+TIPE DATA dengan implmentasi interface io
+io.reader
+---------
+bytes.reader (ada seek)
+bytes.buffer 
+strings.reader (ada seek)
+os.file (ada seek)
+
+note: seek adalah fungsi untuk mengatur posisi pembacaan (offset) 
+
+io.writer
+---------
+bytes.buffer
+os.file
+os.stdout
+
+string([]byte{104, 101, 108, 108, 111}) //convert slice byte ke string
+[]byte("Hello, World!") //convert string ke slice byte
+strings.NewReader: Menghasilkan objek io.Reader dari sebuah string.(strings.reader)
+bytes.NewReader: Menghasilkan objek io.Reader dari sebuah slice byte.(bytes.reader)
+
+bytes
+ Menulis Data ke bytes.Buffer:
+WriteString(s string) (n int, err error): Menulis string ke buffer.
+WriteByte(c byte) error: Menulis byte tunggal ke buffer.
+Write(p []byte) (n int, err error): Menulis data byte dari sebuah slice ke buffer.
+ Membaca Data dari bytes.Buffer:
+Read(p []byte) (n int, err error): Membaca data dari buffer ke dalam sebuah slice.
+ReadByte() (byte, error): Membaca satu byte dari buffer.
+ReadString(delim byte) (string, error): Membaca string dari buffer hingga delimiter tertentu.
+ Fungsi Tambahan:
+Reset(): Mengatur kembali buffer ke dalam keadaan kosong.
+
+io
+  Menulis Data:
+io.WriteString(writer io.Writer, s string) (n int, err error): Menulis string ke writer.
+io.Copy(dst io.Writer, src io.Reader) (written int64, err error): Menyalin data dari src ke dst.
+  Membaca Data:
+io.ReadFull(r io.Reader, buf []byte) (n int, err error): Membaca tepat len(buf) byte dari reader.
+io.ReadAll(r io.Reader) ([]byte, error): Membaca seluruh data dari reader.
+io.LimitReader(r io.Reader, n int64) io.Reader: Membaca n byte pertama dari reader.
+  Manipulasi Data:
+io.TeeReader(r io.Reader, w io.Writer) io.Reader: Membuat reader baru yang menulis semua data yang dibacanya ke writer.
+io.MultiReader(readers ...io.Reader) io.Reader: Menggabungkan beberapa reader menjadi satu reader.
+io.MultiWriter(writers ...io.Writer) io.Writer: Menggabungkan beberapa writer menjadi satu writer.
+  Fungsi Tambahan:
+io.EOF: Konstanta yang mewakili akhir dari file atau data.
+io.ErrUnexpectedEOF: Konstanta yang mewakili akhir yang tidak terduga dari file atau data.
+io.Seeker: Antarmuka untuk menemukan posisi dalam suatu sumber data.
+io.Seek(0,0) mengembalikan posisi pembaca ke awal
+io.EOF adalah error yang di hasilkan oleh read ketika tidak ada lagi data untuk di baca
+
+di golang interface secara alami merupakan reference dan sudah pointer
+
+int64(data) : konversi tipe data
+data.(int64) : konversi interface (typeassertion)
+
+
+Penggunaan return atau break dalam blok select bergantung pada bagaimana Anda ingin loop yang mengandung select berakhir.
+
+Menggunakan break: Jika Anda menggunakan break di dalam case blok select, maka loop yang mengandung select akan berhenti. Setelah break, program akan melanjutkan eksekusi di luar loop.
+
+Menggunakan return: Jika Anda menggunakan return di dalam case blok select, maka fungsi yang berisi loop akan berhenti eksekusinya dan langsung keluar dari fungsi.
+
+Menggunakan break:
+
+go
+Copy code
+for {
+    select {
+    case time := range tick.C:
+        fmt.Println("Data:", time)
+    case <-timeout:
+        fmt.Println("Loop timeout")
+        break // Hanya keluar dari loop
+    }
+}
+// Program akan melanjutkan eksekusi setelah loop.
+fmt.Println("Loop selesai.")
+Menggunakan return:
+
+go
+Copy code
+for {
+    select {
+    case time := range tick.C:
+        fmt.Println("Data:", time)
+    case <-timeout:
+        fmt.Println("Loop timeout")
+        return // Keluar dari fungsi secara langsung
+    }
+}
+// Kode ini tidak akan dijalankan jika `return` dipanggil
+fmt.Println("Loop selesai.")
+Jadi, apakah Anda memilih break atau return dalam select bergantung pada apa yang ingin Anda lakukan setelah loop selesai:
+
+break: Menghentikan loop dan melanjutkan eksekusi setelah loop.
+return: Menghentikan loop dan langsung keluar dari fungsi.
+Jika tujuan Anda adalah mengakhiri loop dan kemudian menjalankan beberapa pernyataan lain setelah loop (misalnya, mencetak pesan "Loop selesai."), gunakan break. 
+Jika tujuan Anda adalah langsung keluar dari fungsi setelah loop berakhir, gunakan return.
+

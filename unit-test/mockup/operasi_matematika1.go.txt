@@ -1,0 +1,21 @@
+package mockup
+
+// Interface untuk operasi matematika
+type OperasiMatematika interface {
+	Tambah(a, b int) int
+	Kurang(a, b int) int
+	Kali(a, b int) int
+}
+
+// Implementasi dari interface OperasiMatematika
+type Kalkulator struct{}
+
+func (k *Kalkulator) Tambah(a, b int) int {
+	return a + b
+}
+func (k *Kalkulator) Kurang(a, b int) int {
+	return a - b
+}
+func (k *Kalkulator) Kali(a, b int) int {
+	return a * b
+}

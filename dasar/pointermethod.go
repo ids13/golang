@@ -14,7 +14,7 @@ func (man *Man) nikah() { //penggunaan pointer
 }
 
 func main() {
-	v := &Man{"naga"} //menyimpan pointer struct man
+	v := Man{"naga"} //menyimpan pointer struct man
 	v.nikah()
 	fmt.Println(v.name)
 }
