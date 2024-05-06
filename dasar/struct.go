@@ -41,9 +41,11 @@ func main() {
 	data4.kelas = 12
 	data4.nama
 	data4.umur = 17
+
 	fmt.Println(data4.kelas)
 	fmt.Println(data4.nama)
 	fmt.Println(data4.umur)
+
 	/*
 		Go menyediakan akses langsung ke bidang-bidang yang ditanamkan
 		tanpa perlu menyebutkan nama struct yang ditanamkan.
@@ -57,6 +59,8 @@ func main() {
 		Karena bidang umur tidak ditemukan di dalam struct murid,
 		Go akan melihat ke dalam struct yang ditanamkan, yaitu orang, dan menemukan bidang umur di sana.
 		Oleh karena itu, Anda bisa langsung menulis data4.umur
-		untuk mengakses bidang umur tanpa perlu menuliskan data4.orang.umur.
+		untuk mengakses bidang umur tanpa perlu menuliskan data4.orang.umur(kecuali ada nama field yang sama).
+		jika memiliki nama field yang sama (contohnya struct murid juga memiliki field umur)
+		maka cara aksesnya data4.umur dan data4.orang.umur , ini supaya tidak ambigu
 	*/
 }
